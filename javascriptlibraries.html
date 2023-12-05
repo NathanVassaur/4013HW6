@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "UTF-8"
+      <meta name = "viewport" content= "width=device-width,  initial-scale=1.0">
+    <title> Javascript Libraries</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Example: Using Lodash
+            var array = [1, 2, 3, 4, 5];
+            var sum = _.sum(array);
+            console.log("Sum using Lodash:", sum);
+
+            // Example: Using Moment.js
+            var now = moment();
+            console.log("Current date and time using Moment.js:", now.format('MMMM Do YYYY, h:mm:ss a'));
+        });
+
+      <script>
+        $(document).ready(function () 
+            var teamData = [
+                { team: "Montreal Canadiens", wins: 24 },
+                { team: "Toronto Maple Leafs", wins: 13 },
+                { team: "Detroit Red Wings", wins: 11 },
+                { team: "Boston Bruins", wins: 6 },
+                { team: "Chicago Blackhawks", wins: 6 },
+                {team: "Calgary Disappointments :(", wins: 3} ];
+
+      
+            var totalWins = _.sumBy(teamData, 'wins');
+            console.log("Total Stanley Cup Wins:", totalWins);
+
+            
+            var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+            console.log("Current Date and Time:", currentDate);
+
+            
+            var ctx = document.getElementById('stanleyCupChart').getContext('2d');
+            var stanleyCupChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: teamData.map(team => team.team),
+                    datasets: [{
+                        label: 'Stanley Cup Wins',
+                        data: teamData.map(team => team.wins),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+
+      
+
+              
+      </script>
+</head>
+<body>
+    
+    <h1>NHL Teams Information</h1>
+
+    <p>This page displays information about NHL teams, including the total number of Stanley Cup wins and a bar chart showing the number of wins for each team.</p>
+
+    <canvas id="stanleyCupChart" width="400" height="200"></canvas>
+
+</body>
+</html>
+  
+
+    
+
+    
+  </head>
