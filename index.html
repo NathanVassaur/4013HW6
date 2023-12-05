@@ -1,17 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Libraries</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class= "container">
-      <h1>NHL Stanley CUp Winners</h1>
-      
-      <a href="javascriptlibraries.html"> NHL Data </a>
-      </div> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL Teams Information</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var teamData = [
+            { team: "Montreal Canadiens", wins: 24 },
+            { team: "Toronto Maple Leafs", wins: 13 },
+            { team: "Detroit Red Wings", wins: 11 },
+            { team: "Boston Bruins", wins: 6 },
+            { team: "Calgary Dissapointments", wins: 3 },
+        ];
+
+        var totalWins = _.sumBy(teamData, 'wins');
+        console.log("Total Stanley Cup Wins:", totalWins);
+
+        var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        console.log("Current Date and Time:", currentDate);
+
+        var ctx = document.getElementById('stanleyCupChart').getContext('2d');
+        var stanleyCupChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: teamData.map(team => team.team),
+                datasets: [{
+                    label: 'Stanley Cup Wins',
+                    data: teamData.map(team => team.wins),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+</head>
+<body>
+    <h1>NHL Teams Information</h1>
+
+    <p>Stanley cup wins</p>
+
+    <!-- Bar chart canvas -->
+    <canvas id="stanleyCupChart" width="400" height="200"></canvas>
+
+</body>
 </html>
