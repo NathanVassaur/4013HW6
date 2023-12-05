@@ -6,28 +6,15 @@
     <title>NHL Teams Information</title>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h1>Stanley Cup Winners</h1>
 
-    <!-- Bar chart canvas -->
     <canvas id="stanleyCupChart" width="400" height="200"></canvas>
-
-    <div>
-        <h2>Library Demonstrations:</h2>
-
-        <div id="jqueryExample"></div>
-
-        <div id="lodashExample"></div>
-
-        <div id="momentExample"></div>
-
-        <div id="axiosExample"></div>
-    </div>
 
     <script>
         $(document).ready(function () {
@@ -37,16 +24,13 @@
                 { team: "Detroit Red Wings", wins: 11 },
                 { team: "Boston Bruins", wins: 6 },
                 { team: "Chicago Blackhawks", wins: 6 },
-                // Add more teams as needed
             ];
 
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
-            $('#lodashExample').text('Total Stanley Cup Wins (Lodash): ' + totalWins);
 
             var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
             console.log("Current Date and Time:", currentDate);
-            $('#momentExample').text('Current Date and Time (Moment.js): ' + currentDate);
 
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
@@ -69,19 +53,6 @@
                     }
                 }
             });
-            
-            axios.get('https://jsonplaceholder.typicode.com/todos/1')
-                .then(function (response) {
-                    var fetchedData = response.data.title;
-                    console.log('Fetched Data:', fetchedData);
-                    $('#axiosExample').text('Fetched Data (Axios): ' + fetchedData);
-                })
-                .catch(function (error) {
-                    console.error('Error fetching data:', error);
-                    $('#axiosExample').text('Error fetching data with Axios.');
-                });
-
-            $('#jqueryExample').text('jQuery is used to manipulate the DOM.');
         });
     </script>
 </body>
