@@ -17,46 +17,44 @@
 
     
     <script>
-        
-        $(document).ready(function () {
-            
-            var teamData = [
-                { team: "Montreal Canadiens", wins: 24 },
-                { team: "Toronto Maple Leafs", wins: 13 },
-                { team: "Detroit Red Wings", wins: 11 },
-                { team: "Boston Bruins", wins: 6 },
-                { team: "Calgary Dissapointments", wins: 3 },
-            ];
+    document.addEventListener("DOMContentLoaded", function() {
+        var teamData = [
+            { team: "Montreal Canadiens", wins: 24 },
+            { team: "Toronto Maple Leafs", wins: 13 },
+            { team: "Detroit Red Wings", wins: 11 },
+            { team: "Boston Bruins", wins: 6 },
+            { team: "Calgary Dissapointments", wins: 3 },
+        ];
 
-            var totalWins = _.sumBy(teamData, 'wins');
-            console.log("Total Stanley Cup Wins:", totalWins);
+        var totalWins = _.sumBy(teamData, 'wins');
+        console.log("Total Stanley Cup Wins:", totalWins);
 
-            var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-            console.log("Current Date and Time:", currentDate);
+        var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        console.log("Current Date and Time:", currentDate);
 
-            var ctx = document.getElementById('stanleyCupChart').getContext('2d');
-            var stanleyCupChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: teamData.map(team => team.team),
-                    datasets: [{
-                        label: 'Stanley Cup Wins',
-                        data: teamData.map(team => team.wins),
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+        var ctx = document.getElementById('stanleyCupChart').getContext('2d');
+        var stanleyCupChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: teamData.map(team => team.team),
+                datasets: [{
+                    label: 'Stanley Cup Wins',
+                    data: teamData.map(team => team.wins),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>
 </head>
 <body>
     <h1>NHL Teams Information</h1>
