@@ -14,7 +14,20 @@
 <body>
     <h1>Stanley Cup Winners</h1>
 
+    <!-- Bar chart canvas -->
     <canvas id="stanleyCupChart" width="400" height="200"></canvas>
+
+    <div>
+        <h2>Library Demonstrations:</h2>
+
+        <div id="jqueryExample"></div>
+
+        <div id="lodashExample"></div>
+
+        <div id="momentExample"></div>
+
+        <div id="axiosExample"></div>
+    </div>
 
     <script>
         $(document).ready(function () {
@@ -29,9 +42,11 @@
 
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
+            $('#lodashExample').text('Total Stanley Cup Wins (Lodash): ' + totalWins);
 
             var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
             console.log("Current Date and Time:", currentDate);
+            $('#momentExample').text('Current Date and Time (Moment.js): ' + currentDate);
 
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
@@ -54,6 +69,19 @@
                     }
                 }
             });
+            
+            axios.get('https://jsonplaceholder.typicode.com/todos/1')
+                .then(function (response) {
+                    var fetchedData = response.data.title;
+                    console.log('Fetched Data:', fetchedData);
+                    $('#axiosExample').text('Fetched Data (Axios): ' + fetchedData);
+                })
+                .catch(function (error) {
+                    console.error('Error fetching data:', error);
+                    $('#axiosExample').text('Error fetching data with Axios.');
+                });
+
+            $('#jqueryExample').text('jQuery is used to manipulate the DOM.');
         });
     </script>
 </body>
