@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset = "UTF-8"
-      <meta name = "viewport" content= "width=device-width,  initial-scale=1.0">
-    <title> Javascript Libraries</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL Teams Information</title>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -12,40 +12,28 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    
     <script>
+        
         $(document).ready(function () {
-            // Example: Using Lodash
-            var array = [1, 2, 3, 4, 5];
-            var sum = _.sum(array);
-            console.log("Sum using Lodash:", sum);
-
-            // Example: Using Moment.js
-            var now = moment();
-            console.log("Current date and time using Moment.js:", now.format('MMMM Do YYYY, h:mm:ss a'));
-        });
-
-      <script>
-        $(document).ready(function () 
+            
             var teamData = [
                 { team: "Montreal Canadiens", wins: 24 },
                 { team: "Toronto Maple Leafs", wins: 13 },
                 { team: "Detroit Red Wings", wins: 11 },
                 { team: "Boston Bruins", wins: 6 },
-                { team: "Chicago Blackhawks", wins: 6 },
-                {team: "Calgary Disappointments :(", wins: 3} ];
+                { team: "Calgary Dissapointments", wins: 3 },
+            ];
 
-      
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
 
-            
             var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
             console.log("Current Date and Time:", currentDate);
 
-            
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
                 type: 'bar',
@@ -68,25 +56,15 @@
                 }
             });
         });
-
-      
-
-              
-      </script>
+    </script>
 </head>
 <body>
-    
     <h1>NHL Teams Information</h1>
 
-    <p>This page displays information about NHL teams, including the total number of Stanley Cup wins and a bar chart showing the number of wins for each team.</p>
+    <p>Stanley cup wins</p>
 
+    <!-- Bar chart canvas -->
     <canvas id="stanleyCupChart" width="400" height="200"></canvas>
 
 </body>
 </html>
-  
-
-    
-
-    
-  </head>
