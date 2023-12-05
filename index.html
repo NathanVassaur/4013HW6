@@ -6,24 +6,18 @@
     <title>NHL Teams Information</title>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h1>Stanley Cup Winners</h1>
 
-     <!-- Bar chart canvas -->
-    <canvas id="stanleyCupChart" width="100%" height="50%"></canvas>
-    
+    <canvas id="stanleyCupChart" width="400" height="200"></canvas>
+
     <script>
         $(document).ready(function () {
-            
             var teamData = [
                 { team: "Montreal Canadiens", wins: 24 },
                 { team: "Toronto Maple Leafs", wins: 13 },
@@ -33,15 +27,12 @@
                 // Add more teams as needed
             ];
 
-            // Example: Using Lodash to sum the total wins
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
 
-            // Example: Using Moment.js to display the current date and time
             var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
             console.log("Current Date and Time:", currentDate);
 
-            // Example: Using Chart.js to create a bar chart
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
                 type: 'bar',
@@ -64,13 +55,6 @@
                 }
             });
         });
- 
-</head>
-
-    
-   
-    
-        
-   </script>
+    </script>
 </body>
 </html>
