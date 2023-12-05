@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NHL Teams Information</title>
 
+    <!-- Include necessary libraries -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/dist/lodash.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js"></script>
+    <!-- Use local Lodash file -->
+    <script src="path/to/lodash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h1>Stanley Cup Winners</h1>
 
+    <!-- Bar chart canvas -->
     <canvas id="stanleyCupChart" width="400" height="200"></canvas>
 
     <script>
@@ -24,14 +26,14 @@
                 { team: "Detroit Red Wings", wins: 11 },
                 { team: "Boston Bruins", wins: 6 },
                 { team: "Chicago Blackhawks", wins: 6 },
+                // Add more teams as needed
             ];
 
+            // Example: Using Lodash to sum the total wins
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
 
-            var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-            console.log("Current Date and Time:", currentDate);
-
+            // Example: Using Chart.js to create a bar chart
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
                 type: 'bar',
