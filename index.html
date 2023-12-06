@@ -3,72 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Libraries Example</title>
-    <!-- Include jQuery library -->
+    <title>NHL Teams Information</title>
+
+    <!-- Include necessary libraries -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Include Chart.js library -->
+    <!-- Use local Lodash file -->
+    <script src="path/to/lodash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Include Axios library -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- Include Lodash library -->
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21"></script>
 </head>
 <body>
+    <h1>Stanley Cup Winners</h1>
 
-<!-- Content -->
-<h1>Welcome to Marcos's JavaScript Libraries Example</h1>
+    <!-- Bar chart canvas -->
+    <canvas id="stanleyCupChart" width="400" height="200"></canvas>
 
-<!-- Chart Example -->
-<canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+        $(document).ready(function () {
+            var teamData = [
+                { team: "Montreal Canadiens", wins: 24 },
+                { team: "Toronto Maple Leafs", wins: 13 },
+                { team: "Detroit Red Wings", wins: 11 },
+                { team: "Boston Bruins", wins: 6 },
+                { team: "Chicago Blackhawks", wins: 6 },
+                // Add more teams as needed
+            ];
 
-<!-- Fetch Data Example -->
-<button id="fetchDataBtn">Fetch Data</button>
-<p id="dataContainer">any of the data will be applied here.</p>
+            // Example: Using Lodash to sum the total wins
+            var totalWins = _.sumBy(teamData, 'wins');
+            console.log("Total Stanley Cup Wins:", totalWins);
 
-<!-- Lodash Example -->
-<p id="lodashExample">What we are pulling from the chart:</p>
-
-<script>
-    // Chart.js code
-    $(document).ready(function() {
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May'],
-                datasets: [{
-                    label: 'Number of OU basketball Games Per month',
-                    data: [8, 7, 3, 0,0],
-                    backgroundColor: 'rgba(132, 23, 25)',
-                    borderColor: 'rgba(132, 23, 25)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            // Example: Using Chart.js to create a bar chart
+            var ctx = document.getElementById('stanleyCupChart').getContext('2d');
+            var stanleyCupChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: teamData.map(team => team.team),
+                    datasets: [{
+                        label: 'Stanley Cup Wins',
+                        data: teamData.map(team => team.wins),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
-    });
-
-    // Axios code
-    $("#fetchDataBtn").click(function() {
-        axios.get('https://jsonplaceholder.typicode.com/todos/1')
-            .then(function (response) {
-                $('#dataContainer').text('18');
-            })
-            .catch(function (error) {
-                console.error('Error fetching data:', error);
             });
-    });
-
-    // Lodash code
-    var lodashResult = _.join(['Total' + 'Games']);
-    $("#lodashExample").append(lodashResult);
-</script>
-
+        });
+    </script>
 </body>
 </html>
