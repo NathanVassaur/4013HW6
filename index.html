@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Libraries Example</title>
-    <!-- Include Chart.js library -->
+
+    <!--Chart.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--Lodash-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21"></script>
+
     
 </head>
 <body>
     <h1>Stanley Cup Winners</h1>
 
-    <!-- Bar chart canvas -->
     <canvas id="stanleyCupChart" width="400" height="200"></canvas>
 
     <script>
@@ -25,11 +28,11 @@
                 // Add more teams as needed
             ];
 
-            // Example: Using Lodash to sum the total wins
+        //Lodash sums the wins 
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
 
-            // Example: Using Chart.js to create a bar chart
+          // Creation of the barchart
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
                 type: 'bar',
