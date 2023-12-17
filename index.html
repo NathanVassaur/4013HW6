@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Library Ex</title>
-    
+
     <!--Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--Lodash-->
@@ -17,24 +17,26 @@
 <body>
     <h1>Stanley Cup Winners</h1>
 
-    <canvas id="stanleyCupChart" width="400" height="200"></canvas>
+    <canvas id="stanleyCupChart" width="300" height="150"></canvas>
 
     <script>
         $(document).ready(function () {
             var teamData = [
-                { team: "Montreal Canadiens", wins: 24 },
-                { team: "Toronto Maple Leafs", wins: 13 },
-                { team: "Detroit Red Wings", wins: 11 },
-                { team: "Boston Bruins", wins: 6 },
-                { team: "Chicago Blackhawks", wins: 6 },
-                // Add more teams as needed
+                { team: "Calgary Disappointments", wins: 3, color: 'rgba(255, 0, 0, 0.7)', secondaryColor: 'rgba(255, 165, 0, 0.7)' },
+                { team: "Montreal Canadiens", wins: 24, color: 'rgba(255, 0, 0, 0.7)', secondaryColor: 'rgba(255, 255, 255, 0.7)' }, 
+                { team: "Toronto Maple Leafs", wins: 13, color: 'rgba(0, 0, 255, 0.7)', secondaryColor: 'rgba(255, 255, 255, 0.7)' },
+                { team: "Detroit Red Wings", wins: 11, color: 'rgba(255, 0, 0, 0.7)', secondaryColor: 'rgba(255, 255, 255, 0.7)' }, 
+                { team: "Boston Bruins", wins: 6, color: 'rgba(0, 0, 0, 0.7)', secondaryColor: 'rgba(255, 255, 0, 0.7)' }, 
+                { team: "Chicago Blackhawks", wins: 6, color: 'rgba(0, 0, 0, 0.7)', secondaryColor: 'rgba(255, 0, 0, 0.7)' }, 
+               
+
             ];
 
-        //Lodash sums the wins 
+            //Lodash sums the wins
             var totalWins = _.sumBy(teamData, 'wins');
             console.log("Total Stanley Cup Wins:", totalWins);
 
-          // Creation of the barchart
+            // Creation of the barchart
             var ctx = document.getElementById('stanleyCupChart').getContext('2d');
             var stanleyCupChart = new Chart(ctx, {
                 type: 'bar',
@@ -43,8 +45,8 @@
                     datasets: [{
                         label: 'Stanley Cup Wins',
                         data: teamData.map(team => team.wins),
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: teamData.map(team => team.color),
+                        borderColor: teamData.map(team => team.secondaryColor),
                         borderWidth: 1
                     }]
                 },
